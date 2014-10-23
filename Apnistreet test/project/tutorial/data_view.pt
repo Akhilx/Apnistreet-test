@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data: View</title>
+</head>
+<body>
+
+<div>
+    <a tal:condition="view.logged_in is None"
+            href="${request.application_url}/login">Log In</a>
+    <a tal:condition="view.logged_in is not None"
+            href="${request.application_url}/logout">Logout</a>
+</div>
+<h1>Data</h1>
+
+<a href="${request.route_url('datapage_add')}">Add
+    DataPage</a>
+<ul>
+    <li tal:repeat="page pages">
+        <a href="${request.route_url('datapage_view', uid=page.uid)}">
+                ${page.title}
+        </a>
+    </li>
+</ul>
+</body>
+</html>
